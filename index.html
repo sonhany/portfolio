@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>sonhany · Quant Research &amp; Homelab Developer</title>
+<meta name="description" content="Personal homepage of sonhany — developer of quantitative paper-trading research systems and a self-hosted fnOS homelab.">
+<style>
+  :root{
+    --bg:#0b1120; --card:#111c33; --line:#1e2b47;
+    --text:#dbe4f3; --muted:#8ea0bf; --accent:#38bdf8; --accent2:#818cf8;
+    --radius:14px; font-size:16px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.65; -webkit-font-smoothing:antialiased;
+  }
+  code,.mono{font-family:ui-monospace,SFMono-Regular,Consolas,Menlo,monospace}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  .wrap{max-width:1020px;margin:0 auto;padding:0 24px}
+
+  header{
+    position:sticky;top:0;z-index:10;
+    background:rgba(11,17,32,.82);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .brand{font-weight:700;letter-spacing:.3px;color:var(--text)}
+  .brand span{color:var(--accent)}
+  nav a{color:var(--muted);margin-left:22px;font-size:.95rem}
+  nav a:hover{color:var(--text);text-decoration:none}
+
+  .hero{padding:96px 0 80px;
+    background:radial-gradient(1200px 500px at 70% -10%, rgba(56,189,248,.14), transparent 60%),
+               radial-gradient(900px 420px at 10% 110%, rgba(129,140,248,.12), transparent 60%);
+  }
+  .kicker{color:var(--accent);font-family:ui-monospace,Consolas,monospace;font-size:.9rem;letter-spacing:2px;text-transform:uppercase}
+  .hero h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.15;margin:14px 0 18px;font-weight:800}
+  .hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{max-width:680px;color:var(--muted);font-size:1.08rem}
+  .cta{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:10px;font-weight:600;font-size:.95rem;border:1px solid var(--line)}
+  .btn-primary{background:linear-gradient(90deg,#0ea5e9,#6366f1);color:#fff;border:none}
+  .btn-primary:hover{text-decoration:none;filter:brightness(1.1)}
+  .btn-ghost{color:var(--text);background:rgba(255,255,255,.03)}
+  .btn-ghost:hover{text-decoration:none;border-color:var(--accent)}
+
+  section{padding:72px 0;border-top:1px solid var(--line)}
+  h2{font-size:1.6rem;margin-bottom:8px}
+  .sub{color:var(--muted);margin-bottom:34px;max-width:680px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;transition:transform .18s ease,border-color .18s ease}
+  .card:hover{transform:translateY(-3px);border-color:#2c406e}
+  .card h3{font-size:1.05rem;margin-bottom:6px}
+  .card h3 .tag{font-size:.7rem;color:var(--accent2);border:1px solid #33406b;border-radius:99px;padding:2px 9px;margin-left:8px;vertical-align:2px;font-weight:500}
+  .card p{color:var(--muted);font-size:.93rem;margin-bottom:12px}
+  .card a.repo{font-family:ui-monospace,Consolas,monospace;font-size:.82rem;color:var(--accent)}
+
+  .chips{display:flex;flex-wrap:wrap;gap:10px}
+  .chip{border:1px solid var(--line);background:rgba(255,255,255,.03);border-radius:99px;padding:7px 16px;color:var(--text);font-size:.9rem}
+  .chip b{color:var(--accent);font-weight:600}
+
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px;margin-top:8px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px}
+  .stat .n{font-size:1.5rem;font-weight:800;color:var(--accent)}
+  .stat .l{color:var(--muted);font-size:.85rem}
+
+  .note{margin-top:18px;border-left:3px solid var(--accent2);padding:10px 16px;background:rgba(129,140,248,.07);border-radius:0 10px 10px 0;color:var(--muted);font-size:.9rem}
+
+  footer{border-top:1px solid var(--line);padding:34px 0;color:var(--muted);font-size:.88rem}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+  @media (max-width:640px){
+    nav a{margin-left:14px}
+    .hero{padding:64px 0 56px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">sonhany</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#homelab">Homelab</a>
+      <a href="https://github.com/sonhany" target="_blank" rel="noopener">GitHub ↗</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="kicker">// quant research · self-hosting</div>
+    <h1>Quant research systems,<br>a homelab that <em>never sleeps</em>.</h1>
+    <p>I'm sonhany — a developer building quantitative <strong>paper-trading</strong> research
+    systems in Python, and running a self-hosted homelab on a fnOS NAS. Everything here is a
+    personal, non-commercial learning project: data pipelines, backtesting engines, risk controls
+    — and the nginx page you're reading right now.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="https://github.com/sonhany" target="_blank" rel="noopener">View my GitHub</a>
+      <a class="btn btn-ghost" href="#projects">See projects ↓</a>
+    </div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap">
+    <h2>About me</h2>
+    <p class="sub">Developer · Quant research hobbyist · Self-hosting enthusiast</p>
+    <div class="grid">
+      <div class="card">
+        <h3>Quant research</h3>
+        <p>I study Chinese A-share markets by building research tools: market-data collection,
+        factor computation, strategy backtesting and simulated execution — always on a
+        <strong>simulated account</strong>, with hard risk limits and full auditability.
+        No real-money trading, no paid signals, nothing for sale.</p>
+      </div>
+      <div class="card">
+        <h3>Homelab on fnOS</h3>
+        <p>A Dell tower runs fnOS with Docker services around the clock — API gateways, a
+        NetBird (WireGuard) mesh for remote access, DDNS automation, and this homepage.</p>
+      </div>
+      <div class="card">
+        <h3>Learning in public</h3>
+        <p>My work lives on GitHub, alongside forks of projects I study. Reading other people's
+        code is half of my education; the other half is breaking my own.</p>
+      </div>
+    </div>
+    <div class="stats" style="margin-top:18px">
+      <div class="stat"><div class="n">13</div><div class="l">public repositories</div></div>
+      <div class="stat"><div class="n">6</div><div class="l">Docker services running</div></div>
+      <div class="stat"><div class="n">24/7</div><div class="l">homelab uptime</div></div>
+      <div class="stat"><div class="n">100%</div><div class="l">self-hosted</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h2>Projects</h2>
+    <p class="sub">My own work — source code is public on GitHub. Forks &amp; studies listed further below.</p>
+    <div class="grid">
+      <div class="card">
+        <h3>璇玑 · xuanji <span class="tag">Python</span></h3>
+        <p>My main project: a self-evolving A-share <strong>quant paper-trading</strong> system —
+        data collection → factor computation → strategy backtesting → simulated execution →
+        risk monitoring, with an AI-driven scheduling/review layer. Hard risk controls, whitelist
+        execution, auditable and rollback-safe. Simulation only.</p>
+        <a class="repo" href="https://github.com/sonhany/xuanji" target="_blank" rel="noopener">sonhany/xuanji ↗</a>
+      </div>
+      <div class="card">
+        <h3>AlphaCouncil2-AI</h3>
+        <p>An A-share quant research pipeline: data collection → 58 factors → 4 strategies →
+        event-driven backtesting → simulated execution → risk control.</p>
+        <a class="repo" href="https://github.com/sonhany/AlphaCouncil2-AI" target="_blank" rel="noopener">sonhany/AlphaCouncil2-AI ↗</a>
+      </div>
+      <div class="card">
+        <h3>TrendRadar <span class="tag">Python</span></h3>
+        <p>Trending-topic aggregation and tracking — a daily digest of what's moving, so I don't
+        have to open ten tabs every morning.</p>
+        <a class="repo" href="https://github.com/sonhany/TrendRadar" target="_blank" rel="noopener">sonhany/TrendRadar ↗</a>
+      </div>
+    </div>
+    <div class="note">
+      Also on my GitHub — forks &amp; studies:
+      <a href="https://github.com/sonhany/AlphaCouncil" target="_blank" rel="noopener">AlphaCouncil</a> (multi-agent stock analysis),
+      <a href="https://github.com/sonhany/dive-into-llms" target="_blank" rel="noopener">dive-into-llms</a>,
+      <a href="https://github.com/sonhany/hermes-agent" target="_blank" rel="noopener">hermes-agent</a>,
+      <a href="https://github.com/sonhany/OneKVM" target="_blank" rel="noopener">OneKVM</a>,
+      <a href="https://github.com/sonhany/DockerTarBuilder" target="_blank" rel="noopener">DockerTarBuilder</a>,
+      <a href="https://github.com/sonhany/win11React" target="_blank" rel="noopener">win11React</a>, and more.
+    </div>
+  </div>
+</section>
+
+<section id="homelab">
+  <div class="wrap">
+    <h2>The homelab</h2>
+    <p class="sub">Everything on this page — and every tool I study with — runs on hardware I own.</p>
+    <div class="grid">
+      <div class="card">
+        <h3>fnOS NAS (Dell tower)</h3>
+        <p>Docker host for: <span class="mono">new-api</span> (LLM API gateway for my research
+        scripts), <span class="mono">NetBird</span> (WireGuard mesh for secure remote access),
+        a DDNS renewal bot, and <span class="mono">nginx</span> serving this page.</p>
+      </div>
+      <div class="card">
+        <h3>Why self-host?</h3>
+        <p>Data stays home, services stay up, and every failure is mine to fix — which is exactly
+        how you learn networking, containers and DNS for real.</p>
+      </div>
+    </div>
+    <div class="chips" style="margin-top:18px">
+      <span class="chip"><b>Python</b> · research &amp; tooling</span>
+      <span class="chip"><b>Docker</b> · containers everywhere</span>
+      <span class="chip"><b>Linux</b> · daily driver</span>
+      <span class="chip"><b>nginx</b> · serving this page</span>
+      <span class="chip"><b>WireGuard / NetBird</b> · mesh VPN</span>
+      <span class="chip"><b>fnOS</b> · NAS OS</span>
+      <span class="chip"><b>Git &amp; GitHub</b> · everything versioned</span>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <h2>Get in touch</h2>
+    <p class="sub">Questions about my projects, or just want to talk quant research and homelabs?</p>
+    <div class="cta" style="margin-top:6px">
+      <a class="btn btn-primary" href="mailto:sonhany@163.com">sonhany@163.com</a>
+      <a class="btn btn-ghost" href="https://github.com/sonhany" target="_blank" rel="noopener">github.com/sonhany</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© <span id="yr">2026</span> sonhany · self-hosted on fnOS + nginx</div>
+    <div class="mono" style="color:#4c5b7a">single file · no trackers · no CDN</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
